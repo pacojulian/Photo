@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PHOTO</string>
+    <string name="foto">Tomar Foto</string>
+    <string name="Galeria">Galeria</string>
+</resources>
