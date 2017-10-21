@@ -5,4 +5,21 @@ package com.example.pacod.proyecto.DB;
  */
 
 public class DetallePedido {
+
+    public String idCabeceraPedido;
+
+    public int secuencia;
+
+    public String idProducto;
+
+
+    public float precio;
+
+    public DetallePedido(String idCabeceraPedido, int secuencia,
+                         String idProducto, float precio) {
+        this.idCabeceraPedido = idCabeceraPedido;
+        this.secuencia = secuencia;
+        this.idProducto = idProducto;
+        this.precio = precio;
+    }
 }

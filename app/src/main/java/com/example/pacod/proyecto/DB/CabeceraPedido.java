@@ -5,4 +5,19 @@ package com.example.pacod.proyecto.DB;
  */
 
 public class CabeceraPedido {
+
+    public String idCabeceraPedido;
+
+    public String fecha;
+
+    public String idCliente;
+
+    public String idFormaPago;
+
+    public CabeceraPedido(String idCabeceraPedido, String fecha
+                          ) {
+        this.idCabeceraPedido = idCabeceraPedido;
+        this.fecha = fecha;
+
+    }
 }

@@ -5,6 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.pacod.proyecto.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main" />
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/txt_url"
         android:layout_width="355dp"
@@ -35,7 +53,7 @@
         android:id="@+id/frameLayout"
         android:layout_width="372dp"
         android:layout_height="510dp"
-        android:layout_marginBottom="-98dp"
+        android:layout_marginBottom="-28dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:padding="16dp"

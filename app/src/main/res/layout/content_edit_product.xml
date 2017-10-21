@@ -8,4 +8,35 @@
     tools:context="com.example.pacod.proyecto.Edit_product"
     tools:showIn="@layout/activity_edit_product">
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="48sp"
+        android:text="SQLITO"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/edit_producto"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+    <EditText
+        android:id="@+id/txt_precio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:hint="Nuevo Precio"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/edit_producto"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:inputType="number"
+        />
+
 </android.support.constraint.ConstraintLayout>
