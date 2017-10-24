@@ -1,8 +1,9 @@
 package com.example.pacod.proyecto;
 
 /**
- * Created by pacod on 12/10/2017.
+ * Created by pacod on 21/10/2017.
  */
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,18 +20,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class LanguagesListAdapter1 extends BaseAdapter{
+public class historialAdapter
+        extends BaseAdapter{
     ArrayList<String> result;
     ArrayList<String> result1;
     Context context;
     List<Integer> imageId;
     private static LayoutInflater inflater=null;
 
-    public LanguagesListAdapter1(cart mainActivity, ArrayList<String> prgmNameList, ArrayList<String> list_precio) {
+    public historialAdapter(Historial historial, ArrayList<String> compra, ArrayList<String> elementos) {
 // TODO Auto-generated constructor stub
-        result=prgmNameList;
-        result1=list_precio;
-        context=mainActivity;
+        result=compra;
+        result1=elementos;
+        context=historial;
         inflater = ( LayoutInflater )context.
                 getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -58,8 +60,8 @@ public class LanguagesListAdapter1 extends BaseAdapter{
     public class Holder
     {
 
-        TextView tv_language1;
-        TextView v_precio;
+        TextView fecha;
+        TextView elemento;
         ImageView im_language;
     }
     @Override
@@ -67,21 +69,21 @@ public class LanguagesListAdapter1 extends BaseAdapter{
 // TODO Auto-generated method stub
         Holder holder=new Holder();
         View view;
-        view = inflater.inflate(R.layout.layout_language_list_item1, null);
+        view = inflater.inflate(R.layout.layout_historial_list_item, null);
 
-        holder.tv_language1=(TextView) view.findViewById(R.id.tv_language1);
-        holder.v_precio=(TextView) view.findViewById(R.id.tv_language2);
+        holder.fecha=(TextView) view.findViewById(R.id.txt_fecha);
+        holder.elemento=(TextView) view.findViewById(R.id.txt_elementos);
 
 
-        holder.tv_language1.setText("PRODUCTO: "+result.get(position));
-        holder.v_precio.setText(result1.get(position));
+        holder.fecha.setText("Compra: "+result.get(position));
+        holder.elemento.setText(result1.get(position)+" Elementos");
 
-       ;
+        ;
 
 
         //double total= getTotal(result1);
         //TextView txt_total=(TextView) view.findViewById(R.id.cart_total);
-       //txt_total.setText("$ 9,000.00");
+        //txt_total.setText("$ 9,000.00");
 
         view.setOnClickListener(new OnClickListener() {
             @Override

@@ -26,7 +26,6 @@
                 <TextView
                     android:layout_width="395dp"
                     android:layout_height="wrap_content"
-                    android:text="$ 8,000.00"
                     android:textAlignment="center"
                     android:textSize="48sp"
                     android:layout_marginRight="8dp"
@@ -37,9 +36,9 @@
                     android:layout_marginTop="8dp"
                     android:id="@+id/cart_total" />
                 <TextView
+                    android:id="@+id/cart_elem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4 Elementos"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:layout_marginTop="8dp"

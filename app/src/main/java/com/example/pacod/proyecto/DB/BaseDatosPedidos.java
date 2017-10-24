@@ -14,7 +14,7 @@ public class BaseDatosPedidos extends SQLiteOpenHelper {
 
     private static final String NOMBRE_BASE_DATOS = "carrito2.db";
 
-    private static final int VERSION_ACTUAL = 4;
+    private static final int VERSION_ACTUAL = 5;
 
     private final Context contexto;
 
@@ -57,20 +57,20 @@ public class BaseDatosPedidos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-       /* db.execSQL(String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        "%s TEXT UNIQUE NOT NULL,%s DATETIME NOT NULL,%s TEXT NOT NULL %s," +
-                        "%s TEXT NOT NULL %s)",
-                Tablas.CABECERA_PEDIDO, BaseColumns._ID,
-                ContratoPedidos.CabecerasPedido.generarIdCabeceraPedido(), ContratoPedidos.CabecerasPedido.FECHA))*/;
 
-       /* db.execSQL(String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        "%s TEXT NOT NULL %s,%s INTEGER NOT NULL CHECK (%s>0)," +
-                        "%s INTEGER NOT NULL,%s REAL NOT NULL,UNIQUE (%s,%s) )",
+        db.execSQL(String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "%s DATETIME NOT NULL,%s INTEGER NOT NULL," +
+                        "%s INTEGER NOT NULL)",
+                Tablas.CABECERA_PEDIDO, BaseColumns._ID,
+                ContratoPedidos.CabecerasPedido.FECHA,ContratoPedidos.CabecerasPedido.TOTAL,ContratoPedidos.CabecerasPedido.ELEMENTOS));
+
+        db.execSQL(String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        "%s TEXT NOT NULL,%s REAL NOT NULL ," +
+                        "%s REAL NOT NULL,%s  REAL NOT NULL,%s DATETIME NOT NULL )",
                 Tablas.DETALLE_PEDIDO, BaseColumns._ID,
-                ContratoPedidos.DetallesPedido.ID_PRODUCTO, Referencias.ID_CABECERA_PEDIDO,
-                ContratoPedidos.DetallesPedido.SECUENCIA, ContratoPedidos.DetallesPedido.SECUENCIA,
-                ContratoPedidos.DetallesPedido.ID_PRODUCTO, Referencias.ID_PRODUCTO, ContratoPedidos.DetallesPedido.PRECIO,
-                ContratoPedidos.DetallesPedido.ID_PRODUCTO, ContratoPedidos.DetallesPedido.SECUENCIA));*/
+                ContratoPedidos.DetallesPedido.NOMBRE_PRODUCTO,
+                ContratoPedidos.DetallesPedido.PRECIO, ContratoPedidos.DetallesPedido.CANT,
+                ContratoPedidos.DetallesPedido.VALORES,ContratoPedidos.DetallesPedido.FECHA));
 
         db.execSQL(String.format("CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "%s TEXT NOT NULL UNIQUE,%s REAL NOT NULL,%s TEXT NOT NULL)",

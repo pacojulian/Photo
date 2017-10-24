@@ -108,8 +108,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.historial:
-                Toast.makeText(MainActivity.this,
-                        "Seleccionaste: "+item, Toast.LENGTH_LONG).show();
+                Intent intent2 = new Intent(MainActivity.this,Historial.class);
+                startActivity(intent2);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -152,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
 
         try{
          datos.getDb().beginTransaction();
+           // Boolean chato =datos.eliminarTablaPedido();
+            //Log.d("Eliminar",chato.toString());
          Cursor c= datos.obtenerProductos();
          if(c.moveToFirst()){
              do{

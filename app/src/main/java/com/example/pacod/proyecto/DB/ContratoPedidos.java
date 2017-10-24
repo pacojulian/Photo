@@ -11,15 +11,18 @@ public class ContratoPedidos {
     interface ColumnasCabeceraPedido {
         String ID = "id";
         String FECHA = "fecha";
-        String ID_CLIENTE = "id_cliente";
-        String ID_FORMA_PAGO = "id_forma_pago";
+        String TOTAL="total";
+        String ELEMENTOS="elemento";
+
     }
 
     interface ColumnasDetallePedido {
         String ID = "id";
-        String SECUENCIA = "secuencia";
-        String ID_PRODUCTO = "id_producto";
+        String NOMBRE_PRODUCTO = "nombre_producto";
         String PRECIO = "precio";
+        String CANT="cant";
+        String VALORES="valores";
+        String FECHA = "fecha";
     }
 
     interface ColumnasProducto {

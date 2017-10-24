@@ -14,10 +14,15 @@ public class CabeceraPedido {
 
     public String idFormaPago;
 
-    public CabeceraPedido(String idCabeceraPedido, String fecha
+    float total;
+    int element;
+
+    public CabeceraPedido(String idCabeceraPedido, String fecha,float total, int element
                           ) {
         this.idCabeceraPedido = idCabeceraPedido;
         this.fecha = fecha;
+        this.total= total;
+        this.element=element;
 
     }
 }

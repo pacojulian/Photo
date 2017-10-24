@@ -84,18 +84,19 @@ public final class OperacionesBaseDatos {
         String idCabeceraPedido = ContratoPedidos.CabecerasPedido.generarIdCabeceraPedido();
 
         ContentValues valores = new ContentValues();
-        valores.put(ContratoPedidos.CabecerasPedido.generarIdCabeceraPedido(), idCabeceraPedido);
         valores.put(ContratoPedidos.CabecerasPedido.FECHA, pedido.fecha);
+        valores.put(ContratoPedidos.CabecerasPedido.TOTAL, pedido.total);
+        valores.put(ContratoPedidos.CabecerasPedido.ELEMENTOS, pedido.element);
 
         // Insertar cabecera
         db.insertOrThrow(BaseDatosPedidos.Tablas.CABECERA_PEDIDO, null, valores);
 
-        return idCabeceraPedido;
+        return pedido.fecha+"_"+pedido.total+"_"+pedido.element;
     }
 
 
 
-    public boolean actualizarCabeceraPedido(CabeceraPedido pedidoNuevo) {
+   /* public boolean actualizarCabeceraPedido(CabeceraPedido pedidoNuevo) {
         SQLiteDatabase db = baseDatos.getWritableDatabase();
 
         ContentValues valores = new ContentValues();
@@ -109,9 +110,9 @@ public final class OperacionesBaseDatos {
 
         return resultado > 0;
     }
+*/
 
-
-    public boolean eliminarCabeceraPedido(String idCabeceraPedido) {
+    /*public boolean eliminarCabeceraPedido(String idCabeceraPedido) {
         SQLiteDatabase db = baseDatos.getWritableDatabase();
 
         String whereClause = ContratoPedidos.CabecerasPedido.generarIdCabeceraPedido() + "=?";
@@ -120,9 +121,9 @@ public final class OperacionesBaseDatos {
         int resultado = db.delete(BaseDatosPedidos.Tablas.CABECERA_PEDIDO, whereClause, whereArgs);
 
         return resultado > 0;
-    }
+    }*/
 
-    public Cursor obtenerDetallesPorIdPedido(String idCabeceraPedido) {
+   /* public Cursor obtenerDetallesPorIdPedido(String idCabeceraPedido) {
         SQLiteDatabase db = baseDatos.getReadableDatabase();
 
         String sql = String.format("SELECT * FROM %s WHERE %s=?",
@@ -132,26 +133,34 @@ public final class OperacionesBaseDatos {
 
         return db.rawQuery(sql, selectionArgs);
 
-    }
+    }*/
 
     public String insertarDetallePedido(DetallePedido detalle) {
+
+
         SQLiteDatabase db = baseDatos.getWritableDatabase();
 
         ContentValues valores = new ContentValues();
-        valores.put(ContratoPedidos.DetallesPedido.ID, detalle.idCabeceraPedido);
-        valores.put(ContratoPedidos.DetallesPedido.SECUENCIA, detalle.secuencia);
-        valores.put(ContratoPedidos.DetallesPedido.ID_PRODUCTO, detalle.idProducto);
+       // valores.put(ContratoPedidos.DetallesPedido.ID, detalle.idCabeceraPedido);
+        valores.put(ContratoPedidos.DetallesPedido.NOMBRE_PRODUCTO, detalle.nombre);
         valores.put(ContratoPedidos.DetallesPedido.PRECIO, detalle.precio);
+        valores.put(ContratoPedidos.DetallesPedido.CANT, detalle.cant);
+        valores.put(ContratoPedidos.DetallesPedido.VALORES, detalle.element);
+        valores.put(ContratoPedidos.DetallesPedido.FECHA, detalle.fecha);
+
+
+
+
 
         db.insertOrThrow(BaseDatosPedidos.Tablas.DETALLE_PEDIDO, null, valores);
 
-        return String.format("%s#%d", detalle.idCabeceraPedido, detalle.secuencia);
+        return detalle.nombre+"_"+detalle.element+"_"+detalle.fecha;
 
     }
 
 
 
-    public boolean actualizarDetallePedido(DetallePedido detalle) {
+    /*public boolean actualizarDetallePedido(DetallePedido detalle) {
         SQLiteDatabase db = baseDatos.getWritableDatabase();
 
         ContentValues valores = new ContentValues();
@@ -165,9 +174,9 @@ public final class OperacionesBaseDatos {
         int resultado = db.update(BaseDatosPedidos.Tablas.DETALLE_PEDIDO, valores, selection, whereArgs);
 
         return resultado > 0;
-    }
+    }*/
 
-    public boolean eliminarDetallePedido(String idCabeceraPedido, int secuencia) {
+   /* public boolean eliminarDetallePedido(String idCabeceraPedido, int secuencia) {
         SQLiteDatabase db = baseDatos.getWritableDatabase();
 
         String selection = String.format("%s=? AND %s=?",
@@ -177,7 +186,14 @@ public final class OperacionesBaseDatos {
         int resultado = db.delete(BaseDatosPedidos.Tablas.DETALLE_PEDIDO, selection, whereArgs);
 
         return resultado > 0;
-    }
+    }*/
+   public Cursor obtenerHistorial() {
+       SQLiteDatabase db = baseDatos.getReadableDatabase();
+
+       String sql = String.format("SELECT * FROM %s", BaseDatosPedidos.Tablas.CABECERA_PEDIDO);
+
+       return db.rawQuery(sql, null);
+   }
 
 
 
@@ -257,6 +273,18 @@ public final class OperacionesBaseDatos {
 
         return resultado > 0;
     }
+
+
+    public boolean eliminarTablaPedido() {
+        SQLiteDatabase db = baseDatos.getWritableDatabase();
+
+
+
+        int resultado = db.delete(BaseDatosPedidos.Tablas.CABECERA_PEDIDO,null,null);
+
+        return resultado > 0;
+    }
+
 
 
     public SQLiteDatabase getDb() {
